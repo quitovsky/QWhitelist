@@ -74,6 +74,22 @@ public class WhitelistCommand extends AbstractCommand {
                 sender.sendMessage(
                         Config.getMessage("reloaded")
                 );
+            } else if (subCommand.equalsIgnoreCase("toggle")) {
+                boolean isEnabled = Config.getBoolean("isEnabled");
+                Config.set("isEnabled", !isEnabled);
+                if (isEnabled) {
+                    sender.sendMessage(Config.getMessage("pluginDisabled"));
+                } else {
+                    sender.sendMessage(Config.getMessage("pluginEnabled"));
+                }
+            } else if (subCommand.equalsIgnoreCase("restricted")) {
+                boolean isRestricted = Config.getBoolean("isRestricted");
+                Config.set("isRestricted", !isRestricted);
+                if (isRestricted) {
+                    sender.sendMessage(Config.getMessage("restrictedDisabled"));
+                } else {
+                    sender.sendMessage(Config.getMessage("restrictedEnabled"));
+                }
             }
         } else {
             sender.sendMessage(

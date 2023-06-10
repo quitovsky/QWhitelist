@@ -20,6 +20,14 @@ public class Config {
         return Objects.requireNonNull(config.getString("messages." + messageName)).replace('&', '§');
     }
 
+    public static boolean getBoolean(String path) {
+        return config.getBoolean(path);
+    }
+
+    public static void set(String path, Object value) {
+        config.set(path, value);
+    }
+
     public static void reload() {
         QWhitelist.getInstance().reloadConfig();
         config = QWhitelist.getInstance().getConfig();

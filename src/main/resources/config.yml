@@ -1,3 +1,5 @@
+isEnabled: true
+isRestricted: false
 messages:
   added: '&aПользователь %player добавлен в белый список.'
   alreadyInList: '&cПользователь %player уже в белом списке.'
@@ -7,3 +9,8 @@ messages:
   wrongUsage: '&cНеправильное использование. /wl <add/remove/clear>'
   kickMessage: '&cВас нет в вайтлисте. Оставьте заявку на https://marla.su/quitovsky'
   reloaded: '&aКонфиг обновлён.'
+  pluginEnabled: '&aВайтлист включен.'
+  pluginDisabled: '&cВайтлист выключен.'
+  kickedRestricted: "&cВход временно разрешен только для администраторов."
+  restrictedDisabled: "&cОграниченный режим выключен."
+  restrictedEnabled: "&aОграниченный режим (вход только для администраторов) включен."
