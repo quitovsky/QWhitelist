@@ -3,6 +3,8 @@ package qtv.qwhitelist.commands;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
+import qtv.qwhitelist.QWhitelist;
+import qtv.qwhitelist.utils.Config;
 import qtv.qwhitelist.utils.Db;
 
 import java.sql.Statement;
@@ -24,11 +26,13 @@ public class WhitelistCommand extends AbstractCommand {
                     statement.executeUpdate("INSERT INTO players (user) VALUES ('" + playerName + "')");
                     statement.close();
                     sender.sendMessage(
-                            ChatColor.GREEN + "Игрок " + playerName + " добавлен в вайтлист."
+                            Config.getMessage("added").replace("%player", playerName)
                     );
                 } catch (Exception e) {
                     e.printStackTrace();
-                    sender.sendMessage(ChatColor.RED + "Игрок уже находится в вайтлисте.");
+                    sender.sendMessage(
+                            Config.getMessage("alreadyInList").replace("%player", playerName)
+                    );
                 }
             } else if (subCommand.equalsIgnoreCase("remove")) {
                 try {
@@ -36,7 +40,7 @@ public class WhitelistCommand extends AbstractCommand {
                     statement.executeUpdate("DELETE FROM players WHERE user = '" + playerName + "'");
                     statement.close();
                     sender.sendMessage(
-                            ChatColor.GREEN + "Игрок " + playerName + " удален из вайтлиста."
+                            Config.getMessage("removed").replace("%player", playerName)
                     );
 
                     Bukkit.getServer().dispatchCommand(
@@ -45,27 +49,37 @@ public class WhitelistCommand extends AbstractCommand {
                     );
                 } catch (Exception e) {
                     e.printStackTrace();
-                    sender.sendMessage(ChatColor.RED + "Что-то пошло не так.");
+                    sender.sendMessage(
+                            Config.getMessage("error")
+                    );
                 }
             }
         } else if (args.length == 1) {
-            if (args[0].equalsIgnoreCase("clear")) {
+            String subCommand = args[0];
+            if (subCommand.equalsIgnoreCase("clear")) {
                 try {
                     Statement statement = Db.getConnection().createStatement();
                     statement.executeUpdate("DROP TABLE players");
                     statement.close();
                 } catch (Exception e) {
                     e.printStackTrace();
-                    sender.sendMessage(ChatColor.RED + "Что-то пошло не так...");
+                    sender.sendMessage(
+                            Config.getMessage("error")
+                    );
                 }
                 Db.initTable();
                 sender.sendMessage(
-                        ChatColor.GREEN + "Таблица players пересоздана."
+                        Config.getMessage("cleared")
+                );
+            } else if (subCommand.equalsIgnoreCase("reload")) {
+                Config.reload();
+                sender.sendMessage(
+                        Config.getMessage("reloaded")
                 );
             }
         } else {
             sender.sendMessage(
-                    "§cНеправильное использование. /wl <add/remove>"
+                    Config.getMessage("wrongUsage")
             );
         }
     }

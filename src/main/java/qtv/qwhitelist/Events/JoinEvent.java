@@ -4,6 +4,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import qtv.qwhitelist.QWhitelist;
+import qtv.qwhitelist.utils.Config;
 import qtv.qwhitelist.utils.Db;
 
 import java.sql.ResultSet;
@@ -18,7 +19,7 @@ public class JoinEvent implements Listener {
             rs.next();
             if(rs.getInt("count") == 0) {
                 QWhitelist.getInstance().getLogger().info("Player " + e.getName() + " is not in the database.");
-                e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, "Тебя нет в вайтлисте.");
+                e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, Config.getMessage("kickMessage"));
             }
             statement.close();
         } catch (Exception exception) {

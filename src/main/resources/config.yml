@@ -1,0 +1,9 @@
+messages:
+  added: '&aПользователь %player добавлен в белый список.'
+  alreadyInList: '&cПользователь %player уже в белом списке.'
+  removed: '&aПользователь %player удалён из белого списка.'
+  cleared: '&aБаза players пересоздана.'
+  error: '&cЧто-то пошло не так.'
+  wrongUsage: '&cНеправильное использование. /wl <add/remove/clear>'
+  kickMessage: '&cВас нет в вайтлисте. Оставьте заявку на https://marla.su/quitovsky'
+  reloaded: '&aКонфиг обновлён.'
