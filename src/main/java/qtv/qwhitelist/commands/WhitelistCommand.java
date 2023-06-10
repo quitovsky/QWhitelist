@@ -1,9 +1,7 @@
 package qtv.qwhitelist.commands;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
-import qtv.qwhitelist.QWhitelist;
 import qtv.qwhitelist.utils.Config;
 import qtv.qwhitelist.utils.Db;
 

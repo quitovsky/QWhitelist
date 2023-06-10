@@ -1,6 +1,5 @@
 package qtv.qwhitelist.Events;
 
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import qtv.qwhitelist.QWhitelist;
