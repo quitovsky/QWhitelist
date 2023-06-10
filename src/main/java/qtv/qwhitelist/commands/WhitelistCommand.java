@@ -1,5 +1,6 @@
 package qtv.qwhitelist.commands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import qtv.qwhitelist.utils.Db;
@@ -36,6 +37,11 @@ public class WhitelistCommand extends AbstractCommand {
                     statement.close();
                     sender.sendMessage(
                             ChatColor.GREEN + "Игрок " + playerName + " удален из вайтлиста."
+                    );
+
+                    Bukkit.getServer().dispatchCommand(
+                            Bukkit.getConsoleSender(),
+                            "kick " + playerName
                     );
                 } catch (Exception e) {
                     e.printStackTrace();
