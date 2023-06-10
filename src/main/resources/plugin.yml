@@ -1,0 +1,9 @@
+name: QWhitelist
+version: '${project.version}'
+main: qtv.qwhitelist.QWhitelist
+commands:
+  qwhitelist:
+    aliases:
+      - wl
+    permission: qwhitelist.edit
+    description: Edit players in QWhitelist
